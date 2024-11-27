@@ -86,9 +86,3 @@ Deadline: 5
 
 ## Contributing
 Feel free to fork the repository and contribute by submitting a pull request. Suggestions and bug reports are welcome!
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
