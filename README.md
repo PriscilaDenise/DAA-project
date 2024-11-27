@@ -1,113 +1,94 @@
 
+### Group Members:
+- Muwanguzi Priscila Denise   M23B23/010
+- Mawejje JohnPaul                M23B23/049
+- Nicole Johnson                     S23B23/020
 
-```markdown
-# Task Scheduler with Optimization and Reminders
+## Overview
+The **Task Scheduler Program** is designed to help users manage their tasks efficiently by allowing them to create, optimize, and visualize a schedule based on task priorities and time slots. The program uses dynamic programming to select an optimal set of non-overlapping tasks. It also includes a notification system that alerts users about upcoming tasks and missed tasks, as well as a Gantt chart for visualizing the task schedule.
 
-## Project Overview
-
-This project demonstrates the use of dynamic programming and scheduling algorithms to optimize task management. The **Task Scheduler** program allows users to input tasks, optimize their schedule based on task priorities, and receive notifications about upcoming or missed tasks. It also generates a Gantt chart to visually represent the optimized task schedule.
-
-The task scheduling optimization uses a dynamic programming approach to find the maximum priority sum of non-overlapping tasks. This project is ideal for demonstrating real-world applications of algorithms and data structures in managing tasks efficiently.
-
-## Key Concepts Covered
-
-- **Dynamic Programming**: Used to select the maximum priority set of non-overlapping tasks.
-- **Binary Search**: Used to efficiently find the last non-overlapping task, improving the dynamic programming approach.
-- **Task Scheduling**: A real-world application of scheduling algorithms.
-- **Visualization**: Creating Gantt charts to visualize the task schedule over time.
-
-## Project Features
-
-- **Task Creation**: Users can enter tasks with attributes like name, type (personal/academic), start time, end time, priority, and deadline.
-- **Task Optimization**: The program uses dynamic programming to find an optimal schedule by selecting tasks with the highest priority that don't overlap.
-- **Task Notifications**: The program will notify the user of upcoming tasks within the next hour or missed tasks.
-- **Gantt Chart Visualization**: The program generates a Gantt chart to visualize the optimized task schedule.
+## Features
+- **Dynamic Task Scheduling**: Automatically selects an optimal set of non-overlapping tasks based on priority using dynamic programming.
+- **Notifications**: Alerts for upcoming tasks (within the next hour) and missed tasks.
+- **Task Visualization**: Generates a Gantt chart to visualize the task schedule.
+- **User-Friendly**: Allows users to input and manage tasks interactively.
 
 ## Requirements
+- **Python 3.x**
+- **Libraries**:
+  - `matplotlib` - For generating Gantt charts.
+  - `datetime` - For handling and manipulating date and time.
+  - `subprocess` - To generate system notifications on macOS.
+  - `bisect` - To perform binary search on sorted lists.
 
-To run the program, make sure Python 3.x is installed on your machine, along with the following libraries:
-
-- `matplotlib`: For generating the Gantt chart.
-- `subprocess`: For sending notifications.
-- `bisect`: For binary search functionality.
-- `datetime`: For handling time-based operations.
-
-You can install the necessary libraries by running:
-
+To install the required libraries, use the following:
 ```bash
 pip install matplotlib
 ```
 
-## Program Flow
+## Usage
 
-1. **Task Input**: Users are prompted to input details for each task, including name, type, start time, end time, priority, and deadline.
-2. **Task Optimization**: Once all tasks are entered, the program optimizes the schedule to maximize the total priority of non-overlapping tasks using dynamic programming.
-3. **Notifications**: The program checks for tasks that are about to start or have already ended, sending notifications to the user accordingly.
-4. **Gantt Chart**: After optimization, a Gantt chart is displayed, showing the optimized task schedule over time.
+1. **Run the Program**:  
+   Start the program by running the script:
+   ```bash
+   python task_scheduler.py
+   ```
 
-## Example Usage
+2. **Input Task Details**:  
+   The program will prompt you to input the details for each task:
+   - **Task Name**: Name of the task (e.g., "Math Homework").
+   - **Task Type**: Type of task, either `personal` or `academic`.
+   - **Start Time**: The starting hour of the task (e.g., 9 for 9:00 AM).
+   - **End Time**: The ending hour of the task (e.g., 11 for 11:00 AM).
+   - **Priority**: Task priority (integer value).
+   - **Deadline**: Task deadline (day of the month).
 
-```bash
-Welcome to the Task Scheduler!
-Enter tasks to create a Gantt chart and receive reminders.
+3. **Task Optimization**:  
+   After entering the task details, the program will automatically optimize the schedule to select the maximum priority set of non-overlapping tasks using dynamic programming.
 
-Enter details for Task 1:
-Task Name: Study
-Task Type (personal/academic): academic
-Start Time (e.g., 1 for 1:00): 9
-End Time (e.g., 5 for 5:00): 12
-Priority (e.g., 10): 10
-Deadline (e.g., 5 for day 5): 5
-Do you want to add another task? (yes/no): yes
+4. **Notifications**:  
+   The program will check for upcoming tasks (tasks starting within an hour) and missed tasks (tasks that have already ended). Notifications will be displayed for these tasks.
 
-Enter details for Task 2:
-Task Name: Exercise
-Task Type (personal/academic): personal
-Start Time (e.g., 1 for 1:00): 13
-End Time (e.g., 5 for 5:00): 14
-Priority (e.g., 10): 7
-Deadline (e.g., 5 for day 5): 5
-Do you want to add another task? (yes/no): no
+5. **Gantt Chart**:  
+   The program will generate and display a Gantt chart representing the selected tasks with bars indicating the start and end times of each task.
 
-Optimizing schedule...
-Maximum Priority: 17
-Selected Tasks for Optimal Schedule:
-- Study (Priority: 10, Start: 9, End: 12)
-- Exercise (Priority: 7, Start: 13, End: 14)
+6. **Add More Tasks**:  
+   After entering a task, you can choose to add more tasks. The program will continue prompting you until you decide to stop.
 
-Checking for reminders and missed tasks...
-Generating Gantt Chart...
+## Example
+**User Input:**
+```plaintext
+Task Name: "Math Homework"
+Task Type: "Academic"
+Start Time: 9 (9:00 AM)
+End Time: 11 (11:00 AM)
+Priority: 10
+Deadline: 5
 ```
 
-## Learning Objectives
+**Program Output:**
+- **Optimal Schedule**: 
+  - Maximum Priority: 20
+  - Selected Tasks:
+    - "Math Homework" (Priority: 10, Start: 9:00 AM, End: 11:00 AM)
+- **Notifications**: Alerts for upcoming and missed tasks.
+- **Gantt Chart**: A chart displaying the task "Math Homework" from 9:00 AM to 11:00 AM.
 
-- **Dynamic Programming for Task Scheduling**: Understand how dynamic programming can be used to optimize task selection based on priorities and time constraints.
-- **Binary Search Application**: Learn how binary search can be used to solve the problem of finding the last non-overlapping task efficiently.
-- **Visualization with Gantt Charts**: Create visual representations of task schedules to help in real-world scheduling scenarios.
-- **Notification System**: Implement a simple reminder and notification system for task management.
+## Error Handling
+- If invalid data is entered (e.g., non-numeric values for time or priority), the program will prompt the user to re-enter the correct information.
+- If the system does not support notifications (e.g., non-macOS systems), the program will handle the exception gracefully and display an error message.
 
-## Running the Program
+## Future Improvements
+- Support for multiple task deadlines (not just day-based).
+- Add functionality to allow users to modify or delete tasks.
+- Implement notification system for non-macOS platforms (e.g., Windows, Linux).
+- Enhance the user interface for better task management.
 
-To run the program, use the following steps:
-
-1. Clone or download the repository.
-2. Navigate to the project directory.
-3. Run the program:
-
-```bash
-python task_scheduler.py
-```
-
-4. Follow the on-screen prompts to enter task details and view the optimized schedule and notifications.
-
-## Notes
-
-- The notification system uses `osascript` for notifications, which is macOS-specific. If you're using a different operating system, you may need to modify the notification system.
-- The Gantt chart provides a simple visual representation of the task schedule and can be customized further if needed.
+## Contributing
+Feel free to fork the repository and contribute by submitting a pull request. Suggestions and bug reports are welcome!
 
 ## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more information.
-```
+---
 
-This version focuses on the learning objectives and how the project relates to algorithmic concepts, making it suitable for class presentations and assignments.
